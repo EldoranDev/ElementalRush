@@ -6,7 +6,7 @@ class Enemy : MonoBehaviour {
     public float Speed;
     public float RotationSpeed;
     public int Reward;
-    public int Lifes;
+    public int Life;
     public int Damage;
 
     int _nextNode = 0;
@@ -31,8 +31,6 @@ class Enemy : MonoBehaviour {
             if(_nextNode >= _path.childCount)
             {
                 var world = GameObject.Find(WorldManager.TAG).GetComponent<WorldManager>();
-
-                world.Money += Reward;
                 world.Lifes -= Damage;
 
                 Destroy(gameObject);
@@ -50,4 +48,22 @@ class Enemy : MonoBehaviour {
 
         transform.Translate(dir * Speed * Time.deltaTime, Space.World);
 	}
+
+    public void DealDamage(int dmg)
+    {
+        Life -= dmg;
+
+        if (Life <= 0)
+        {
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        var world = GameObject.Find(WorldManager.TAG).GetComponent<WorldManager>();
+        world.Money += Reward;
+        
+        Destroy(gameObject);
+    }
 }

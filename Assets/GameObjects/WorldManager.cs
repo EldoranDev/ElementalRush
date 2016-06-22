@@ -12,6 +12,8 @@ class WorldManager : MonoBehaviour {
     public Action<int> LifesChanged;
     public Action<int> MoneyChanged;
 
+    public static WorldManager Instance { get; private set; }
+
     public int Lifes { get
         {
             return _lifes;
@@ -53,6 +55,7 @@ class WorldManager : MonoBehaviour {
         Lifes = StartLifes;
         Money = StartMoney;
 
+	    Instance = this;
         TAG = transform.name;
 	}
 }

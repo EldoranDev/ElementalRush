@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - BuildLayer
+  - EnemyLayer
+  - Mouse
   - 
   - 
   - 

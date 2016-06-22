@@ -6,23 +6,29 @@ class UIManager : MonoBehaviour {
     public Text LifesCounter;
     public Text MoneyCounter;
 
-    private WorldManager _world; 
+    private WorldManager _world;
+    private Collider _collider;
 
 	// Use this for initialization
 	void Start () {
         _world = GetComponent<WorldManager>();
 
-        _world.LifesChanged += OnLifeChange;
+        _world.LifesChanged += OnLifesChanged;
         _world.MoneyChanged += OnMoneyChanged;
+
+	    OnLifesChanged(_world.Lifes);
+	    OnMoneyChanged(_world.Money);
+
+	    _collider = GetComponent<Collider>();
 	}
 	
     void Destroy()
     {
-        _world.LifesChanged -= OnLifeChange;
+        _world.LifesChanged -= OnLifesChanged;
         _world.MoneyChanged -= OnMoneyChanged;
     }
 
-    void OnLifeChange(int value)
+    void OnLifesChanged(int value)
     {
         LifesCounter.text = value.ToString();
     }
@@ -33,7 +39,13 @@ class UIManager : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Update()
+    {
+        
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        Debug.Log(coll);
+    }
 }
