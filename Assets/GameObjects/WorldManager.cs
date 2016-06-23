@@ -55,6 +55,7 @@ class WorldManager : MonoBehaviour {
     public Action<int> LifesChanged;
     public Action<int> MoneyChanged;
 
+    public Tower[] AvailableTower;
     public GameObject[] AvailableTiles;
 
     private int _lifes;

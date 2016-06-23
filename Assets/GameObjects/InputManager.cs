@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance { get; private set; }
+
     public Material PlaceholderMaterial;
 
     public bool PlacementMode
@@ -15,6 +17,11 @@ public class InputManager : MonoBehaviour
 
     private GameObject _courserAddition;
 	
+    void Awake()
+    {
+        Instance = this;
+    }
+
 	// Update is called once per frame
 	void Update () {
 	    if (!EventSystem.current.IsPointerOverGameObject())

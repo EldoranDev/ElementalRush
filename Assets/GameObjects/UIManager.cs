@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,8 +13,11 @@ class UIManager : MonoBehaviour {
 
     public Sprite[] IconMap;
 
+    public GameObject ButtonPrefab;
+
     public SelectionManager SelectionHandler;
     public Tooltip Tooltip;
+    public GameObject TowerSeletion;
 
     private WorldManager _world;
 
@@ -31,6 +35,8 @@ class UIManager : MonoBehaviour {
 
 	    OnLifesChanged(_world.Lifes);
 	    OnMoneyChanged(_world.Money);
+
+        UpdateAvailableTower();
 	}
 	
     void Destroy()
@@ -59,6 +65,49 @@ class UIManager : MonoBehaviour {
         else
         {
             SelectionHandler.gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateAvailableTower()
+    {
+        for(var i = TowerSeletion.transform.childCount-1; i >= 0; i--)
+        {
+            Destroy(TowerSeletion.transform.GetChild(i).gameObject);
+        }
+
+        foreach(var tower in _world.AvailableTower)
+        {
+            var button = Instantiate(ButtonPrefab);
+            var btn = button.GetComponent<Button>();
+            var e = button.GetComponent<EventTrigger>();
+            var t = tower;
+
+            btn.GetComponent<Image>().sprite = t.Image;
+
+            EventTrigger.Entry enter = new EventTrigger.Entry();
+            enter.eventID = EventTriggerType.PointerEnter;
+            enter.callback.AddListener((data) =>
+            {
+                DisplayPriceTooltip(tower.Cost, "Buy " + t.Name);
+            });
+
+            EventTrigger.Entry exit = new EventTrigger.Entry();
+            exit.eventID = EventTriggerType.PointerExit;
+            exit.callback.AddListener((data) =>
+            {
+                HideTooltip();
+            });
+
+            e.triggers.Add(enter);
+            e.triggers.Add(exit);
+
+
+            btn.onClick.AddListener(() =>
+           {
+               InputManager.Instance.TowerSelection(t.gameObject);
+           });
+
+            btn.transform.SetParent(TowerSeletion.transform);
         }
     }
 

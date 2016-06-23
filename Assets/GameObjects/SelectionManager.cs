@@ -67,10 +67,9 @@ public class SelectionManager : MonoBehaviour
                 {
                     t.Upgrade(ut);
                     WorldManager.Instance.Money -= ut.Cost;
+                    UIManager.Instance.HideTooltip();
                 }
             });
-
-
 
             button.transform.SetParent(UpgradePanel.transform);
         }
