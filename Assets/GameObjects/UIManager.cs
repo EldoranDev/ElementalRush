@@ -3,11 +3,20 @@ using UnityEngine.UI;
 using System.Collections;
 
 class UIManager : MonoBehaviour {
+
+    public static UIManager Instance { get; private set; }
+    
     public Text LifesCounter;
     public Text MoneyCounter;
 
+    public SelectionManager SelectionHandler;
+
     private WorldManager _world;
-    private Collider _collider;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -18,8 +27,6 @@ class UIManager : MonoBehaviour {
 
 	    OnLifesChanged(_world.Lifes);
 	    OnMoneyChanged(_world.Money);
-
-	    _collider = GetComponent<Collider>();
 	}
 	
     void Destroy()
@@ -38,14 +45,16 @@ class UIManager : MonoBehaviour {
         MoneyCounter.text = value.ToString();
     }
 
-	// Update is called once per frame
-    void Update()
+    public void DisplaySelection(Tower t)
     {
-        
-    }
-
-    void OnCollisionEnter(Collision coll)
-    {
-        Debug.Log(coll);
+        if (!ReferenceEquals(t, null))
+        {
+            SelectionHandler.gameObject.SetActive(true);
+            SelectionHandler.UpdateTowerDetails(t);
+        }
+        else
+        {
+            SelectionHandler.gameObject.SetActive(false);
+        }
     }
 }

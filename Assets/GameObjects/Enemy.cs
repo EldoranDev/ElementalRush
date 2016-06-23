@@ -30,8 +30,7 @@ class Enemy : MonoBehaviour {
         {
             if(_nextNode >= _path.childCount)
             {
-                var world = GameObject.Find(WorldManager.TAG).GetComponent<WorldManager>();
-                world.Lifes -= Damage;
+                WorldManager.Instance.Lifes -= Damage;
 
                 Destroy(gameObject);
                 return; // early cancel this because we do not longer exist
@@ -61,8 +60,8 @@ class Enemy : MonoBehaviour {
 
     public void Kill()
     {
-        var world = GameObject.Find(WorldManager.TAG).GetComponent<WorldManager>();
-        world.Money += Reward;
+        WorldManager.Instance.Money += Reward;
+        WorldManager.Instance.Points += Reward;
         
         Destroy(gameObject);
     }

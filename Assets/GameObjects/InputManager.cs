@@ -7,36 +7,63 @@ using UnityEngine.EventSystems;
 public class InputManager : MonoBehaviour
 {
     public Material PlaceholderMaterial;
-    public float ScrollSpeed;
+
+    public bool PlacementMode
+    {
+        get { return _courserAddition != null; }
+    }
 
     private GameObject _courserAddition;
-    private Vector3 _lastMousePosition;
-
+	
 	// Update is called once per frame
 	void Update () {
 	    if (!EventSystem.current.IsPointerOverGameObject())
 	    {
 	        UpdateCourser();
 	        UpdateClicks();
-            UpdateCamera();
+
+	        if (!PlacementMode)
+	        {
+	            UpdateSelection();
+	        }
 	    }
 	}
+
+    void UpdateSelection()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+
+            Tower selection = null;
+
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, float.PositiveInfinity,
+                LayerMask.GetMask("BuildLayer")))
+            {
+                selection = hit.transform.gameObject.GetComponent<Tower>();
+            }
+            
+            UIManager.Instance.DisplaySelection(selection);
+            
+        }
+    }
 
     void UpdateClicks()
     {
         if (Input.GetMouseButtonUp(1))
         {
-            if (_courserAddition != null)
+            if (PlacementMode)
             {
-
-
                 Destroy(_courserAddition.gameObject);
+                _courserAddition = null;
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (_courserAddition != null)
+            if (PlacementMode)
             {
                 
                 var placeholder = _courserAddition.GetComponent<PlaceHolder>();
@@ -44,13 +71,13 @@ public class InputManager : MonoBehaviour
 
                 if (WorldManager.Instance.Money >= tower.Cost)
                 {
-
                     WorldManager.Instance.Money -= tower.Cost;
 
                     var location = _courserAddition.transform.position;
 
                     Instantiate(placeholder.Original, location, Quaternion.identity);
-                    Destroy(_courserAddition);
+                    Destroy(_courserAddition.gameObject);
+                    _courserAddition = null;
                 }
             }
         }
@@ -59,7 +86,7 @@ public class InputManager : MonoBehaviour
     void UpdateCourser()
     {
 
-        if (_courserAddition != null)
+        if (PlacementMode)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -77,33 +104,15 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void UpdateCamera()
-    {
-        if(Input.GetMouseButton(2))
-        {
-            var delta = _lastMousePosition - Input.mousePosition;
-            var pos = Camera.main.transform;
-
-            pos.Translate(new Vector3(delta.x, 0, delta.y).normalized * ScrollSpeed * Time.deltaTime * -1, Space.World);
-            pos.position = new Vector3(Mathf.Clamp(pos.position.x, -10, 10), pos.position.y, Mathf.Clamp(pos.position.z, -10, 10));
-
-            //Camera.main.transform.position = pos.transform.position;
-
-            _lastMousePosition = Input.mousePosition;
-        }
-    }
-
     public void TowerSelection(GameObject tower)
     {
-        if (_courserAddition != null)
+        if (PlacementMode)
         {
             Destroy(_courserAddition.gameObject);
         }
 
         var addon = (GameObject)Instantiate(tower, Vector3.up, Quaternion.identity);
-
         Destroy(addon.GetComponent<Tower>());
-        Destroy(addon.GetComponent<Animator>());
 
         var placeholder = addon.AddComponent<PlaceHolder>();
         placeholder.Original = tower;

@@ -5,27 +5,43 @@ public class Projectile : MonoBehaviour {
 
     public float Speed;
     public int Damage;
-    public float Radius;
+    public float ExplosionRadius;
 
     private Transform _target;
+    private Vector3 _targetPosition;
 
     // Update is called once per frame
     void Update()
     {
         if (_target != null)
         {
-            var direction = (_target.position - transform.position);
+            _targetPosition = _target.position;
+        }
 
-            transform.Translate(direction.normalized*Speed*Time.deltaTime, Space.World);
+        var direction = (_targetPosition - transform.position);
 
-            if (direction.magnitude <= 0.1)
+        transform.Translate(direction.normalized*Speed*Time.deltaTime, Space.World);
+
+        if (direction.magnitude <= 0.1)
+        {
+            if (_target != null && ExplosionRadius == 0)
             {
                 var enemy = _target.gameObject.GetComponent<Enemy>();
                 enemy.DealDamage(Damage);
             }
-        }
-        else
-        {
+            else
+            {
+                var enemys = Physics.OverlapSphere(transform.position, ExplosionRadius, LayerMask.GetMask("EnemyLayer"));
+
+                if (enemys.Length > 0)
+                {
+                    foreach (var enemy in enemys)
+                    {
+                        enemy.GetComponent<Enemy>().DealDamage(Damage);
+                    }
+                }
+            }
+
             Destroy(gameObject);
         }
     }

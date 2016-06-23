@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
+    public string Name;
+    public Sprite Image;
+
+    public Tower[] Upgrades;
 
     public Projectile ProjectilePrototype;
     public int Cost;
     public int Damage;
     public float Range;
+
+    public float ProjectileExplosionRadius;
     public float ProjectileSpeed;
 
     public float Cooldown;
@@ -33,15 +40,24 @@ public class Tower : MonoBehaviour
 
 	    if (enemys.Length == 0) return;
 
-	    var target = enemys.First();
+	    var target = enemys.OrderBy(x => (x.transform.position - transform.position).magnitude).First();
 	    var startRot = Quaternion.LookRotation(target.transform.position - transform.position);
 
 	    var projectile = ((GameObject)Instantiate(ProjectilePrototype.gameObject, _out.position, startRot)).GetComponent<Projectile>();
 	    projectile.SetTarget(target.transform);
 
+	    projectile.ExplosionRadius = ProjectileExplosionRadius;
 	    projectile.Speed = ProjectileSpeed;
 	    projectile.Damage = Damage;
 
 	    _counter = 0;
 	}
+
+    public void Upgrade(Tower newTower)
+    {
+        var t = (GameObject)Instantiate(newTower.gameObject, transform.position, transform.rotation);
+        UIManager.Instance.DisplaySelection(t.GetComponent<Tower>());
+
+        Destroy(gameObject);
+    }
 }

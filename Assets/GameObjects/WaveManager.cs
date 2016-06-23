@@ -40,7 +40,7 @@ class WaveManager : MonoBehaviour {
         {
             if(_wave == Waves.Length)
             {
-                //TODO GameOver we won
+                WorldManager.Instance.EndGame(true);
             }
         }
 	}

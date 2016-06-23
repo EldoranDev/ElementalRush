@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: e1153560b91c4c94e8709599c2751092
-timeCreated: 1466606411
+timeCreated: 1466617055
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: button_pressed
     21300002: button_normal
+    21300004: Pane
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -82,6 +83,21 @@ TextureImporter:
         - {x: -95, y: -24.5}
         - {x: 95, y: -24.5}
         - {x: 95, y: 24.5}
+    - name: Pane
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 373
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 5, z: 7, w: 7}
+      outline:
+      - - {x: -22.5, y: 22.5}
+        - {x: -22.5, y: -22.5}
+        - {x: 22.5, y: -22.5}
+        - {x: 22.5, y: 22.5}
     outline: []
   spritePackingTag: 
   userData: 

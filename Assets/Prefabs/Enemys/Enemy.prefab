@@ -90,8 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   RotationSpeed: 0.2
-  Reward: 10
-  Life: 1
+  Reward: 1
+  Life: 3
   Damage: 1
 --- !u!1001 &100100000
 Prefab:
