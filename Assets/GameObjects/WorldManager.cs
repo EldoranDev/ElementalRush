@@ -71,7 +71,7 @@ class WorldManager : MonoBehaviour {
         _board = new GameBoard(WorldSize.X, WorldSize.Y);
         _board.BoardChanged += RebuildBoard;
 
-        RebuildBoard();
+        //RebuildBoard();
     }
 
     public void RebuildBoard()
@@ -84,8 +84,6 @@ class WorldManager : MonoBehaviour {
             for (var y = 0; y < _board.Height; y++)
             {
                 t = _board.GetTileInfo(x, y);
-
-                
 
                 g = (GameObject)Instantiate(AvailableTiles[t.TileType], new Vector3(x, 0, y), Quaternion.identity);
                 g.transform.SetParent(transform);

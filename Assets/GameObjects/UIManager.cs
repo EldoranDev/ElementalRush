@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 class UIManager : MonoBehaviour {
 
@@ -9,7 +10,10 @@ class UIManager : MonoBehaviour {
     public Text LifesCounter;
     public Text MoneyCounter;
 
+    public Sprite[] IconMap;
+
     public SelectionManager SelectionHandler;
+    public Tooltip Tooltip;
 
     private WorldManager _world;
 
@@ -56,5 +60,32 @@ class UIManager : MonoBehaviour {
         {
             SelectionHandler.gameObject.SetActive(false);
         }
+    }
+
+    public void DisplayPriceTooltip(int price, string text)
+    {
+        var data = new TooltipData
+        {
+            Icon = IconMap[0],
+            Title = price.ToString(),
+            Comment = text
+        };
+
+        DisplayTooltip(data);
+    }
+
+    public void DisplayTooltip(TooltipData data)
+    {
+        if(!Tooltip.gameObject.activeInHierarchy)
+        {
+            Tooltip.gameObject.SetActive(true);
+        }
+
+        Tooltip.SetData(data);
+    }
+
+    public void HideTooltip()
+    {
+        Tooltip.gameObject.SetActive(false);
     }
 }
