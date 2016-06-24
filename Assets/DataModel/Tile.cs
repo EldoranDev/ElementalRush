@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+enum TileType { Gras, Path }
+
 class Tile{
 
-    public int TileType { get; private set; }
+	public TileType Type { get; private set; }
 
     public bool BuildSlot { get; private set; }
 
     public bool IsPathTile { get; private set; }
+
+	public bool Spawn { get; private set; }
+
 
     public static Tile GetPathTile()
     {
@@ -15,7 +20,7 @@ class Tile{
         {
             BuildSlot = false,
             IsPathTile = true,
-            TileType = 1,
+			Type = TileType.Path,
         };
     }
 
@@ -25,9 +30,15 @@ class Tile{
         {
             BuildSlot = true,
             IsPathTile = false,
-            TileType = 0
+			Type = TileType.Gras
         };
     }
+
+	public static Tile GetSpawn() {
+		var t = GetPathTile ();
+		t.Spawn = true;
+		return t;
+	}
 
     protected Tile()
     {

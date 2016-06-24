@@ -4,17 +4,36 @@ using System.Security.Policy;
 
 public class PlaceHolder : MonoBehaviour
 {
-    private Renderer[] _childs;
 
     public GameObject Original;
 
-    public bool CanBePlaced { get; private set; }
+    public bool CanBePlaced { 
+		get {
+			return IntersectTower || WorldManager.Instance.BuildArea (transform.position);
+		}
+	}
+
+	private bool IntersectTower {get; set;}
+	private Renderer[] _childs;
+	private bool lastFramePlace = true;
 
     void Awake()
     {
         _childs = GetComponentsInChildren<Renderer>();
         
     }
+
+	void Update() {
+		if (lastFramePlace != CanBePlaced) {
+			if (CanBePlaced) {
+				UpdateColor(new Color(0.2f, 1f, 0.2f, 0.3f));
+			} else {
+				UpdateColor(new Color(1f, 0f, 0f, 0.3f));
+			}
+		}
+
+		lastFramePlace = CanBePlaced;
+	}
 
     public void SetMaterial(Material m) {
 
@@ -45,8 +64,8 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-            CanBePlaced = false;
-            UpdateColor(new Color(1f, 0f, 0f, 0.3f));
+			IntersectTower = false;
+            //UpdateColor(new Color(1f, 0f, 0f, 0.3f));
         }
     }
 
@@ -54,8 +73,8 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-            CanBePlaced = true;
-            UpdateColor(new Color(0.2f, 1f, 0.2f, 0.3f));
+			IntersectTower = true;
+            //UpdateColor(new Color(0.2f, 1f, 0.2f, 0.3f));
         }
     }
 }

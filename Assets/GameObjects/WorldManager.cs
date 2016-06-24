@@ -8,7 +8,7 @@ class WorldManager : MonoBehaviour {
     
     public static WorldManager Instance { get; private set; }
 
-    public Index2 WorldSize;
+
 
     public int Points { get; set; }
     public int Lifes { get
@@ -61,6 +61,7 @@ class WorldManager : MonoBehaviour {
     private int _lifes;
     private int _money;
 
+	private WorldBuilder _builder;
     private GameBoard _board;
 
     void Start () {
@@ -69,31 +70,25 @@ class WorldManager : MonoBehaviour {
 
 	    Instance = this;
 
-        _board = new GameBoard(WorldSize.X, WorldSize.Y);
-        _board.BoardChanged += RebuildBoard;
+		_builder = GetComponent<WorldBuilder> ();
 
-        //RebuildBoard();
+		_board = new GameBoard ("001");
+        RebuildBoard();
     }
 
     public void RebuildBoard()
     {
-        Tile t;
-        GameObject g;
-
-        for (int x = 0; x < _board.Width; x++)
-        {
-            for (var y = 0; y < _board.Height; y++)
-            {
-                t = _board.GetTileInfo(x, y);
-
-                g = (GameObject)Instantiate(AvailableTiles[t.TileType], new Vector3(x, 0, y), Quaternion.identity);
-                g.transform.SetParent(transform);
-            }
-        }
+		_builder.BuildLevel (_board);
+		_builder.BuildPath (_board);
     }
 
     public void EndGame(bool won)
     {
         // End the game (GameOver screen
     }
+
+	public bool BuildArea(Vector3 pos) {
+		var tile = _board.GetTileInfo (pos.x+0.5f, pos.z+0.5f);
+		return (tile != null && tile.Type == TileType.Gras);
+	}
 }

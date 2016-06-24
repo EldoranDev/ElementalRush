@@ -16,7 +16,7 @@ public class MenuManger : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene("TestingArea");
+        SceneManager.LoadScene("GameWorld");
     }
 
     public void EndGame()

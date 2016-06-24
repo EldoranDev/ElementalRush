@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 
 [Serializable]
-class Index2
+struct Index2
 {
     public int Y;
     public int X;
+
+	public Index2(int x, int y){
+		X = x;
+		Y = y;
+	}
 }
