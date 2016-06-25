@@ -9,11 +9,11 @@ public class PlaceHolder : MonoBehaviour
 
     public bool CanBePlaced { 
 		get {
-			return IntersectTower || WorldManager.Instance.BuildArea (transform.position);
+			return !IntersectObject && WorldManager.Instance.BuildArea (transform.position);
 		}
 	}
 
-	private bool IntersectTower {get; set;}
+	private bool IntersectObject {get; set;}
 	private Renderer[] _childs;
 	private bool lastFramePlace = true;
 
@@ -32,6 +32,9 @@ public class PlaceHolder : MonoBehaviour
 			}
 		}
 
+        transform.position = new Vector3(transform.position.x, 0.85f, transform.position.z);
+        
+
 		lastFramePlace = CanBePlaced;
 	}
 
@@ -49,6 +52,11 @@ public class PlaceHolder : MonoBehaviour
         }
     }
 
+    bool OnGround ()
+    {
+        return transform.transform.position.y == 0.85f;
+    }
+
     void UpdateColor(Color clr)
     {
         foreach (var child in _childs)
@@ -64,8 +72,7 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-			IntersectTower = false;
-            //UpdateColor(new Color(1f, 0f, 0f, 0.3f));
+			IntersectObject = true;
         }
     }
 
@@ -73,8 +80,7 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-			IntersectTower = true;
-            //UpdateColor(new Color(0.2f, 1f, 0.2f, 0.3f));
+			IntersectObject = false;
         }
     }
 }

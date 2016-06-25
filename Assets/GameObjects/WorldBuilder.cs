@@ -21,6 +21,10 @@ class WorldBuilder : MonoBehaviour {
 				var tile = board.GetTileInfo (x, y);
 				GameObject spawn = null;
 
+                Debug.Log(string.Format("({0}|{1})", x, y));
+                Debug.Log(tile);
+                Debug.Log(tile.Type);
+
 				if (tile.Type == TileType.Path) {
 					var o = new [] {
 						board.GetTileInfo (x, y - 1),
@@ -28,8 +32,7 @@ class WorldBuilder : MonoBehaviour {
 						board.GetTileInfo (x, y + 1),
 						board.GetTileInfo (x - 1, y)
 					};
-						
-					//spawn = ((o [0] != null && o [0].Type == TileType.Path) || (o [2] != null && o [2].Type == TileType.Path)) ? mod.Rotations [0] : mod.Rotations [1];
+
 					if (
 						(IsPath (o [0]) && IsPath (o [2])) ||
 						(IsPath (o [0]) && !IsPath (o [1]) && !IsPath (o [3])) ||

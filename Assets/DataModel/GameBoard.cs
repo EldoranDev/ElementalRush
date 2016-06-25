@@ -30,7 +30,10 @@ class GameBoard
 
 		string map = _map.text;
 
-		string[] mapLines = Regex.Split (map, "\n|\r|\r\n");
+        Debug.Log(map);
+		string[] mapLines = Regex.Split (map, "\r\n");
+
+       
 
 		if (mapLines.Length > 0) {
 			
@@ -63,6 +66,7 @@ class GameBoard
 
     public Tile GetTileInfo(int x, int y)
     {
+
         if (x >= 0 && x < _data.GetLength(1) && y >= 0 && y < _data.GetLength(0))
         {
             return _data[y, x];

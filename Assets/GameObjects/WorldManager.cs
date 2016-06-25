@@ -8,8 +8,6 @@ class WorldManager : MonoBehaviour {
     
     public static WorldManager Instance { get; private set; }
 
-
-
     public int Points { get; set; }
     public int Lifes { get
         {
@@ -88,7 +86,6 @@ class WorldManager : MonoBehaviour {
     }
 
 	public bool BuildArea(Vector3 pos) {
-		var tile = _board.GetTileInfo (pos.x+0.5f, pos.z+0.5f);
-		return (tile != null && tile.Type == TileType.Gras);
+        return (pos.x < _board.Width && pos.x >= 0 && pos.y >= 0 && pos.y < _board.Height);
 	}
 }
