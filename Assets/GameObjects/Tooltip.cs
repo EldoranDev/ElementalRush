@@ -9,6 +9,11 @@ class Tooltip : MonoBehaviour
 
     void Update()
     {
+        UpdatePosition();
+    }
+
+    public void UpdatePosition()
+    {
         transform.position = Input.mousePosition + new Vector3(5, 5, 0);
     }
 

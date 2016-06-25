@@ -125,12 +125,14 @@ class UIManager : MonoBehaviour {
 
     public void DisplayTooltip(TooltipData data)
     {
-        if(!Tooltip.gameObject.activeInHierarchy)
+        Tooltip.SetData(data);
+
+        if (!Tooltip.gameObject.activeInHierarchy)
         {
             Tooltip.gameObject.SetActive(true);
         }
 
-        Tooltip.SetData(data);
+        Tooltip.UpdatePosition();
     }
 
     public void HideTooltip()

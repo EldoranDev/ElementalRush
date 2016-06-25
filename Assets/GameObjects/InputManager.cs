@@ -76,13 +76,14 @@ public class InputManager : MonoBehaviour
                 var placeholder = _courserAddition.GetComponent<PlaceHolder>();
                 var tower = placeholder.Original.GetComponent<Tower>();
 
-                if (WorldManager.Instance.Money >= tower.Cost)
+                if (WorldManager.Instance.Money >= tower.Cost && placeholder.CanBePlaced)
                 {
                     WorldManager.Instance.Money -= tower.Cost;
 
                     var location = _courserAddition.transform.position;
 
-                    Instantiate(placeholder.Original, location, Quaternion.identity);
+                    var obj = (GameObject)Instantiate(placeholder.Original, location, Quaternion.identity);
+                    obj.transform.position = new Vector3(obj.transform.position.x, 0.77f, obj.transform.position.z);
                     Destroy(_courserAddition.gameObject);
                     _courserAddition = null;
                 }
