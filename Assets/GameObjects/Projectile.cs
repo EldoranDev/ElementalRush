@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
     public int Damage;
     public float ExplosionRadius;
 
+	public DamageType Type;
+
     private Transform _target;
     private Vector3 _targetPosition;
 
@@ -28,7 +30,8 @@ public class Projectile : MonoBehaviour {
             if (_target != null && ExplosionRadius == 0)
             {
                 var enemy = _target.gameObject.GetComponent<Enemy>();
-                enemy.DealDamage(Damage);
+
+				enemy.DealDamage(Damage * Type.GetDamageModifier(enemy.ArmorType));
             }
             else
             {
@@ -38,7 +41,9 @@ public class Projectile : MonoBehaviour {
                 {
                     foreach (var enemy in enemys)
                     {
-                        enemy.GetComponent<Enemy>().DealDamage(Damage);
+						var e = enemy.GetComponent<Enemy> ();
+
+						e.DealDamage(Damage * Type.GetDamageModifier(e.ArmorType));
                     }
                 }
             }

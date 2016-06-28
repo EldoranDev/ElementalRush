@@ -6,8 +6,10 @@ class Enemy : MonoBehaviour {
     public float Speed;
     public float RotationSpeed;
     public int Reward;
-    public int Life;
+    public float Life;
     public int Damage;
+
+	public DamageType ArmorType;
 
     int _nextNode = 0;
 
@@ -48,7 +50,7 @@ class Enemy : MonoBehaviour {
         transform.Translate(dir * Speed * Time.deltaTime, Space.World);
 	}
 
-    public void DealDamage(int dmg)
+    public void DealDamage(float dmg)
     {
         Life -= dmg;
 

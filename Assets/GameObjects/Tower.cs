@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     public int Cost;
     public int Damage;
     public float Range;
+	public DamageType Type;
 
     public float ProjectileExplosionRadius;
     public float ProjectileSpeed;
@@ -45,6 +46,10 @@ public class Tower : MonoBehaviour
 
 	    var projectile = ((GameObject)Instantiate(ProjectilePrototype.gameObject, _out.position, startRot)).GetComponent<Projectile>();
 	    projectile.SetTarget(target.transform);
+		projectile.Type = Type;
+
+		var tint = projectile.GetComponent<Tint> ();
+		tint.TintColor = GetComponent<Tint> ().TintColor;
 
 	    projectile.ExplosionRadius = ProjectileExplosionRadius;
 	    projectile.Speed = ProjectileSpeed;
