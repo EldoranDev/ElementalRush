@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Tint))]
 public class Tower : MonoBehaviour
 {
     public string Name;

@@ -506,6 +506,10 @@ Prefab:
       propertyPath: MaxCameraZoon
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11488218, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
+      propertyPath: CameraSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
   m_IsPrefabParent: 0
