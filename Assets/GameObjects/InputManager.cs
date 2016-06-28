@@ -99,8 +99,8 @@ public class InputManager : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, LayerMask.GetMask("Mouse")))
+			if(Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 10))
+            //if (Physics.Raycast(ray.origin, ray.direction, out hit, ))
             {
                 _courserAddition.SetActive(true);
                 _courserAddition.transform.position = hit.point;

@@ -9,9 +9,11 @@ public class PlaceHolder : MonoBehaviour
 
     public bool CanBePlaced { 
 		get {
-			return !IntersectObject && WorldManager.Instance.BuildArea (transform.position);
+			return _intersectCount == 0 && WorldManager.Instance.BuildArea (transform.position);
 		}
 	}
+
+	private int _intersectCount = 0;
 
 	private bool IntersectObject {get; set;}
 	private Renderer[] _childs;
@@ -34,10 +36,7 @@ public class PlaceHolder : MonoBehaviour
 			} else {
 				UpdateColor(new Color(1f, 0f, 0f, 0.3f));
 			}
-		}
-
-        transform.position = new Vector3(transform.position.x, 0.85f, transform.position.z);
-        
+		}       
 
 		lastFramePlace = CanBePlaced;
 	}
@@ -76,7 +75,7 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-			IntersectObject = true;
+			_intersectCount++;
         }
     }
 
@@ -84,7 +83,7 @@ public class PlaceHolder : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("BuildLayer"))
         {
-			IntersectObject = false;
+			_intersectCount--;
         }
     }
 }
