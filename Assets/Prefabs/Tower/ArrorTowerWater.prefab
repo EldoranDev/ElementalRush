@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f00b9bee57badf48abee966e641341d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Arrorw Tower II
-  Image: {fileID: 21300000, guid: 26c3c41104fd78c459a24511886dfaf0, type: 3}
+  Name: Arrorw Tower (Water)
+  Image: {fileID: 21300000, guid: 1a489cb2e1e3e45b1946e8a44c9ca3f9, type: 3}
   Upgrades: []
   ProjectilePrototype: {fileID: 11486184, guid: 314e4a9e90ced4dfba6c59729891345e,
     type: 2}
