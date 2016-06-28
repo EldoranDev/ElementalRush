@@ -21,10 +21,6 @@ class WorldBuilder : MonoBehaviour {
 				var tile = board.GetTileInfo (x, y);
 				GameObject spawn = null;
 
-                Debug.Log(string.Format("({0}|{1})", x, y));
-                Debug.Log(tile);
-                Debug.Log(tile.Type);
-
 				if (tile.Type == TileType.Path) {
 					var o = new [] {
 						board.GetTileInfo (x, y - 1),
