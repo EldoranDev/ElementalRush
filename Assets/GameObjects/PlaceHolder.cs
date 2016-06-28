@@ -20,8 +20,12 @@ public class PlaceHolder : MonoBehaviour
     void Awake()
     {
         _childs = GetComponentsInChildren<Renderer>();
-        
+		Cursor.visible = false;
     }
+
+	void OnDestroy() {
+		Cursor.visible = true;
+	}
 
 	void Update() {
 		if (lastFramePlace != CanBePlaced) {
