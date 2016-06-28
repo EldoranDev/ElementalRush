@@ -146,7 +146,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &547224802 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 181410, guid: f335b613ce94741aea4523fc5afdb988, type: 2}
@@ -178,7 +178,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &745883183
 Prefab:
   m_ObjectHideFlags: 0
