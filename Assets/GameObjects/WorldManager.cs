@@ -29,6 +29,7 @@ class WorldManager : MonoBehaviour {
             }
         }
     }
+
     public int Money
     {
         get
@@ -82,7 +83,11 @@ class WorldManager : MonoBehaviour {
 
     public void EndGame(bool won)
     {
-        // End the game (GameOver screen
+		if (won) {
+			// Show Score & End Screen
+		} else {
+			SceneManager.LoadScene ("GameOverScreen");
+		}
     }
 
 	public bool BuildArea(Vector3 pos) {

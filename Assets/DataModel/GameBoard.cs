@@ -31,7 +31,7 @@ class GameBoard
 		string map = _map.text;
 
         Debug.Log(map);
-		string[] mapLines = Regex.Split (map, "\r\n");
+		string[] mapLines = Regex.Split (map, "\r\n|\n");
 
        
 
