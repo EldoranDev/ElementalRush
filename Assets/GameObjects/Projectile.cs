@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour {
 
         var direction = (_targetPosition - transform.position);
 
+		transform.rotation = Quaternion.LookRotation (direction);
         transform.Translate(direction.normalized*Speed*Time.deltaTime, Space.World);
 
         if (direction.magnitude <= 0.1)

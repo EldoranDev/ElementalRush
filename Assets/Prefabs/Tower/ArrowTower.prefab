@@ -370,7 +370,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 26c3c41104fd78c459a24511886dfaf0, type: 3}
   Upgrades:
   - {fileID: 11462338, guid: 7f2d737cd2424b54481443ebea34eb45, type: 2}
-  ProjectilePrototype: {fileID: 11476912, guid: 479626b4c2f94ba4084611c554d58f0c,
+  ProjectilePrototype: {fileID: 11486184, guid: 314e4a9e90ced4dfba6c59729891345e,
     type: 2}
   Cost: 10
   Damage: 2

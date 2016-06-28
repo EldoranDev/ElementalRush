@@ -466,7 +466,7 @@ MonoBehaviour:
   Name: Arrorw Tower II
   Image: {fileID: 21300000, guid: 26c3c41104fd78c459a24511886dfaf0, type: 3}
   Upgrades: []
-  ProjectilePrototype: {fileID: 11476912, guid: 479626b4c2f94ba4084611c554d58f0c,
+  ProjectilePrototype: {fileID: 11486184, guid: 314e4a9e90ced4dfba6c59729891345e,
     type: 2}
   Cost: 100
   Damage: 4
