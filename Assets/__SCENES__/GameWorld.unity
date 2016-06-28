@@ -234,27 +234,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.4
+      value: 7.9
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.7
+      value: -4.56
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.16251113
+      value: 0.35836798
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.11378765
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.031509425
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9796172
+      value: 0.9335804
       objectReference: {fileID: 0}
     - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_RootOrder
@@ -263,6 +263,18 @@ Prefab:
     - target: {fileID: 152088, guid: b512422706a824d47914658be269acaa, type: 2}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b512422706a824d47914658be269acaa, type: 2}
@@ -486,6 +498,14 @@ Prefab:
       propertyPath: Waves.Array.data[1].WaveLength
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11488218, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
+      propertyPath: MinCameraZoom
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488218, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
+      propertyPath: MaxCameraZoon
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
   m_IsPrefabParent: 0
@@ -692,10 +712,10 @@ Transform:
   m_PrefabParentObject: {fileID: 441010, guid: b512422706a824d47914658be269acaa, type: 2}
   m_PrefabInternal: {fileID: 881354572}
   m_GameObject: {fileID: 1995575181}
-  m_LocalRotation: {x: 0.16251113, y: 0.11378765, z: -0.031509425, w: 0.9796172}
-  m_LocalPosition: {x: 1.4000002, y: 5.4, z: -7.7}
+  m_LocalRotation: {x: 0.35836798, y: 0, z: 0, w: 0.9335804}
+  m_LocalPosition: {x: 1.4000002, y: 7.9, z: -4.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 19, y: 13, z: -1.5}
+  m_LocalEulerAnglesHint: {x: 42, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -844,7 +864,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22438100, guid: 60ab63514e421450fa383e59bd2fb1f2, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60ab63514e421450fa383e59bd2fb1f2, type: 2}

@@ -9,6 +9,12 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     public Material PlaceholderMaterial;
+    public float CameraSpeed = 18;
+    public float CameraZoonSpeed = 20;
+    public float MinCameraZoom = 20;
+    public float MaxCameraZoom = 90;
+
+    private Vector3 _lastMousePosition;
 
     public bool PlacementMode
     {
@@ -24,6 +30,8 @@ public class InputManager : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
+        UpdateCamera();
+
 	    if (!EventSystem.current.IsPointerOverGameObject())
 	    {
 	        UpdateCourser();
@@ -34,7 +42,26 @@ public class InputManager : MonoBehaviour
 	            UpdateSelection();
 	        }
 	    }
+
+        
 	}
+
+    void UpdateCamera()
+    {
+        if(Input.GetMouseButton(2))
+        {
+            var movment = _lastMousePosition - Input.mousePosition;
+            Camera.main.transform.Translate(new Vector3(movment.x, 0, movment.y) * CameraSpeed * Time.deltaTime * (Camera.main.fieldOfView / MaxCameraZoom), Space.World);
+        }
+
+        var zoom = Input.GetAxis("Mouse ScrollWheel");
+
+        Camera.main.fieldOfView -= zoom * CameraZoonSpeed;
+
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, MinCameraZoom, MaxCameraZoom);
+
+        _lastMousePosition = Input.mousePosition;
+    }
 
     void UpdateSelection()
     {

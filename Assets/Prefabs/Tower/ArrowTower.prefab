@@ -87,6 +87,7 @@ GameObject:
   - 65: {fileID: 6576940}
   - 95: {fileID: 9549580}
   - 54: {fileID: 5449580}
+  - 114: {fileID: 11437836}
   m_Layer: 8
   m_Name: ArrowTower
   m_TagString: Untagged
@@ -375,9 +376,22 @@ MonoBehaviour:
   Cost: 10
   Damage: 2
   Range: 3
+  Type: 0
   ProjectileExplosionRadius: 0
   ProjectileSpeed: 5
   Cooldown: 0.5
+--- !u!114 &11437836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512d7f61812234c55850424c7c48282d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TintColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
