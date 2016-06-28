@@ -482,6 +482,10 @@ Prefab:
       propertyPath: Waves.Array.data[2].SpawnTimeOut
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 11440182, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
+      propertyPath: Waves.Array.data[1].WaveLength
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fffb62617b4d444858ea152b19d0e374, type: 2}
   m_IsPrefabParent: 0
@@ -840,7 +844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22438100, guid: 60ab63514e421450fa383e59bd2fb1f2, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60ab63514e421450fa383e59bd2fb1f2, type: 2}
