@@ -17,11 +17,14 @@ public class InputManager : MonoBehaviour
 
     private Vector3 _lastMousePosition;
 
+    private GameObject _currentSelection;
+
     public bool PlacementMode
     {
         get { return _courserAddition != null; }
     }
 
+   
     private GameObject _courserAddition;
 	
     void Awake()
@@ -78,10 +81,9 @@ public class InputManager : MonoBehaviour
                 LayerMask.GetMask("BuildLayer")))
             {
                 selection = hit.transform.gameObject.GetComponent<Tower>();
-            }
-            
+            } 
+
             UIManager.Instance.DisplaySelection(selection);
-            
         }
     }
 
@@ -140,7 +142,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void TowerSelection(GameObject tower)
+    public void TowerPlacement(GameObject tower)
     {
         if (PlacementMode)
         {

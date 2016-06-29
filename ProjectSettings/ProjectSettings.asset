@@ -9,7 +9,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Marcel Behrmann
   productName: ElementalRush
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -440,7 +440,7 @@ PlayerSettings:
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 1
-  WebGL::memorySize: 256
+  WebGL::memorySize: 1024
   WebPlayer::ScriptingBackend: 0
   boolPropertyNames:
   - WebGL::analyzeBuildSize

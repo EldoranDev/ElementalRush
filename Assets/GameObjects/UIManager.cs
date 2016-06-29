@@ -64,7 +64,7 @@ class UIManager : MonoBehaviour {
         }
         else
         {
-            SelectionHandler.gameObject.SetActive(false);
+            SelectionHandler.Hide();
         }
     }
 
@@ -86,9 +86,10 @@ class UIManager : MonoBehaviour {
 
             EventTrigger.Entry enter = new EventTrigger.Entry();
             enter.eventID = EventTriggerType.PointerEnter;
+
             enter.callback.AddListener((data) =>
             {
-                DisplayPriceTooltip(tower.Cost, "Buy " + t.Name);
+                DisplayPriceTooltip(t.Cost, "Buy " + t.Name);
             });
 
             EventTrigger.Entry exit = new EventTrigger.Entry();
@@ -104,7 +105,7 @@ class UIManager : MonoBehaviour {
 
             btn.onClick.AddListener(() =>
            {
-               InputManager.Instance.TowerSelection(t.gameObject);
+               InputManager.Instance.TowerPlacement(t.gameObject);
            });
 
             btn.transform.SetParent(TowerSeletion.transform);

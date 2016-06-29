@@ -484,8 +484,8 @@ MonoBehaviour:
   - {fileID: 11458678, guid: 5831ca23792a54cf482fe4936461af13, type: 2}
   ProjectilePrototype: {fileID: 11486184, guid: 314e4a9e90ced4dfba6c59729891345e,
     type: 2}
-  Cost: 100
-  Damage: 4
+  Cost: 50
+  Damage: 10
   Range: 2.5
   Type: 0
   ProjectileExplosionRadius: 0

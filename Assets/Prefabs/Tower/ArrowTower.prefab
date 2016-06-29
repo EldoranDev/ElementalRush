@@ -374,12 +374,12 @@ MonoBehaviour:
   ProjectilePrototype: {fileID: 11486184, guid: 314e4a9e90ced4dfba6c59729891345e,
     type: 2}
   Cost: 10
-  Damage: 2
+  Damage: 5
   Range: 2
   Type: 0
   ProjectileExplosionRadius: 0
   ProjectileSpeed: 5
-  Cooldown: 0.5
+  Cooldown: 0.4
 --- !u!114 &11437836
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,13 +15,35 @@ public class SelectionManager : MonoBehaviour
     public GameObject UpgadePrefab;
     public Image UpgradePanel;
 
+    private Tower _currentTower;
+
     void Start()
     {
         gameObject.SetActive(false);
     }
 
+    public void Hide()
+    {
+        if(_currentTower != null)
+        {
+            _currentTower.RemoveHighlight();
+        }
+
+        gameObject.SetActive(false);
+        _currentTower = null;
+    }
+
     public void UpdateTowerDetails(Tower t)
     {
+        if(_currentTower != null)
+        {
+            _currentTower.RemoveHighlight();
+        }
+
+        _currentTower = t;
+
+        _currentTower.Highlight();
+
         TowerAvatar.sprite = t.Image;
         TowerName.text = t.Name;
         TowerDamage.text = t.Damage.ToString();

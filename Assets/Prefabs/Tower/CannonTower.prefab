@@ -369,8 +369,8 @@ MonoBehaviour:
   Upgrades: []
   ProjectilePrototype: {fileID: 11476912, guid: 479626b4c2f94ba4084611c554d58f0c,
     type: 2}
-  Cost: 10
-  Damage: 1
+  Cost: 15
+  Damage: 5
   Range: 3
   Type: 0
   ProjectileExplosionRadius: 0.5

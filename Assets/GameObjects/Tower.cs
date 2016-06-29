@@ -24,6 +24,8 @@ public class Tower : MonoBehaviour
     private float _counter;
     private Transform _out;
 
+    private MeshRenderer[] _renderer;
+
     bool _useTint;
 
     void Awake()
@@ -32,6 +34,8 @@ public class Tower : MonoBehaviour
         {
             _useTint = true;
         }
+
+        _renderer = GetComponentsInChildren<MeshRenderer>();
     }
 
 	// Use this for initialization
@@ -78,6 +82,28 @@ public class Tower : MonoBehaviour
 
 	    _counter = 0;
 	}
+
+    public void Highlight()
+    {
+        foreach(var child in _renderer)
+        {
+            foreach (var material in child.materials)
+            {
+                material.color += new Color(0.3f, 0.3f, 0.3f);
+            }
+        }
+    }
+
+    public void RemoveHighlight()
+    {
+        foreach (var child in _renderer)
+        {
+            foreach (var material in child.materials)
+            {
+                material.color -= new Color(0.3f, 0.3f, 0.3f);
+            }
+        }
+    }
 
     public void Upgrade(Tower newTower)
     {
