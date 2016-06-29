@@ -40,14 +40,22 @@ public class Tower : MonoBehaviour
 	    _out = transform.FindChild("__OUT__");
 	}
 	
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, Range);
+    }
+
 	// Update is called once per frame
 	void Update ()
 	{
 	    _counter += Time.deltaTime;
 
 	    if (_counter < Cooldown) return;
-        
-	    var enemys = Physics.OverlapSphere(transform.position, Range, 1 << LayerMask.NameToLayer("EnemyLayer"));
+
+
+
+        var enemys = Physics.OverlapSphere(transform.position, Range, 1 << LayerMask.NameToLayer("EnemyLayer"));
 
 	    if (enemys.Length == 0) return;
 

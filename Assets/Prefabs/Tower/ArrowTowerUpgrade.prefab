@@ -486,7 +486,7 @@ MonoBehaviour:
     type: 2}
   Cost: 100
   Damage: 4
-  Range: 4
+  Range: 2.5
   Type: 0
   ProjectileExplosionRadius: 0
   ProjectileSpeed: 5

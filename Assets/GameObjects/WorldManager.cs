@@ -91,6 +91,6 @@ class WorldManager : MonoBehaviour {
     }
 
 	public bool BuildArea(Vector3 pos) {
-        return (pos.x< _board.Width && pos.x >= 0 && pos.z >= 0 && pos.z < _board.Height);
+        return (pos.x +0.5f < _board.Width && pos.x -0.5f >= 0 && pos.z - 0.5f >= 0 && pos.z + 0.5f < _board.Height);
 	}
 }
