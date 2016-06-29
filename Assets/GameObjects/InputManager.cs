@@ -155,9 +155,8 @@ public class InputManager : MonoBehaviour
         placeholder.Original = tower;
         placeholder.SetMaterial(PlaceholderMaterial);
 
-        var indicator = (GameObject) Instantiate(RangeIndicator, placeholder.transform.position, Quaternion.identity);
+        var indicator = (GameObject) Instantiate(RangeIndicator, new Vector3(0, 0.7f, 0), Quaternion.identity);
         indicator.transform.localScale = new Vector3(towerRange, indicator.transform.localScale.y, towerRange);
-
         indicator.transform.SetParent(placeholder.transform);
 
         addon.layer = 2;

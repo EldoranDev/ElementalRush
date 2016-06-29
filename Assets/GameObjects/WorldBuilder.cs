@@ -64,10 +64,11 @@ class WorldBuilder : MonoBehaviour {
 
 				var t = (GameObject)Instantiate (spawn);
 
-				t.transform.position = new Vector3 (x, 0, y);
-				t.transform.SetParent (transform);
+                t.transform.SetParent(transform);
+                t.transform.localPosition = new Vector3 (x, 0, y);
+				
 
-				Spawn.transform.position = new Vector3 (board.SpawnPosition.X - 0.5f, Spawn.transform.position.y, board.SpawnPosition.Y - 0.5f);
+				Spawn.transform.localPosition = new Vector3 (board.SpawnPosition.X - 0.5f, Spawn.transform.position.y, board.SpawnPosition.Y - 0.5f);
 			}
 		}
 	}
@@ -80,10 +81,9 @@ class WorldBuilder : MonoBehaviour {
 		for (int i = 0; i < PathLength; i++) {
 			var p = Instantiate (PathNode);
 
-			p.transform.position = new Vector3 (current.X-0.5f, Spawn.transform.position.y, current.Y-0.5f);
-
-			p.transform.SetParent (Path.transform);
-
+            p.transform.SetParent(Path.transform);
+            p.transform.localPosition = new Vector3 (current.X-0.5f, Spawn.transform.position.y, current.Y-0.5f);
+            
 			visited.Add (current);
 
 			var t = board.GetTileInfo (current.X, current.Y + 1);

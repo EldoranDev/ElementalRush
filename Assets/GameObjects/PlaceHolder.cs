@@ -9,6 +9,7 @@ public class PlaceHolder : MonoBehaviour
 
     public bool CanBePlaced { 
 		get {
+            Debug.Log(transform.position);
 			return _intersectCount == 0 && WorldManager.Instance.BuildArea (transform.position);
 		}
 	}
@@ -22,6 +23,12 @@ public class PlaceHolder : MonoBehaviour
     void Awake()
     {
         _childs = GetComponentsInChildren<Renderer>();
+
+        foreach(var particle in GetComponentsInChildren<ParticleSystem>())
+        {
+            Destroy(particle);
+        }
+        
 		Cursor.visible = false;
     }
 

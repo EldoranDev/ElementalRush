@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Tint))]
 public class Tower : MonoBehaviour
 {
     public string Name;
@@ -24,6 +23,16 @@ public class Tower : MonoBehaviour
 
     private float _counter;
     private Transform _out;
+
+    bool _useTint;
+
+    void Awake()
+    {
+        if(GetComponent<Tint>() != null)
+        {
+            _useTint = true;
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -49,8 +58,11 @@ public class Tower : MonoBehaviour
 	    projectile.SetTarget(target.transform);
 		projectile.Type = Type;
 
-		var tint = projectile.GetComponent<Tint> ();
-		tint.TintColor = GetComponent<Tint> ().TintColor;
+        if (_useTint)
+        {
+            var tint = projectile.gameObject.AddComponent<Tint>();
+            tint.TintColor = GetComponent<Tint>().TintColor;
+        }
 
 	    projectile.ExplosionRadius = ProjectileExplosionRadius;
 	    projectile.Speed = ProjectileSpeed;

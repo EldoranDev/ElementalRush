@@ -20,6 +20,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &154106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495396}
+  m_Layer: 0
+  m_Name: towerDefense_088
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &199326
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470156}
+  - 33: {fileID: 3317032}
+  - 23: {fileID: 2388852}
+  m_Layer: 0
+  m_Name: Mesh1_Group1_Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &468168
 Transform:
   m_ObjectHideFlags: 1
@@ -30,9 +62,71 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 495396}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &470156
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 495396}
+  m_RootOrder: 0
+--- !u!4 &495396
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 470156}
+  m_Father: {fileID: 468168}
+  m_RootOrder: 0
+--- !u!23 &2388852
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199326}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 28d95aa3651a4c646b4faa07e01c3a5b, type: 2}
+  - {fileID: 2100000, guid: 471308d8794a3c344bcbe320eea03449, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3317032
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199326}
+  m_Mesh: {fileID: 4300000, guid: ac3aae01bfe0ade489dfd522663246dd, type: 3}
 --- !u!114 &11421224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44,7 +138,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3863c84adecd640f1b3c84e72013b9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvailableTiles: []
+  Spawn: {fileID: 0}
+  Path: {fileID: 0}
+  PathNode: {fileID: 173232, guid: 564d90863436845db8a7512f69ac349d, type: 2}
+  AvailableTiles:
+  - Name: Gras
+    Rotations:
+    - {fileID: 100002, guid: ac3aae01bfe0ade489dfd522663246dd, type: 3}
+  - Name: Path
+    Rotations:
+    - {fileID: 100002, guid: 9eed2c65677550e4db4a1dc4c23c8a7c, type: 3}
+    - {fileID: 100002, guid: dbbbeb31c6a6a2049a6da05e2f86ee22, type: 3}
+  - Name: Angle
+    Rotations:
+    - {fileID: 100002, guid: e97c8ef93d6c4034a963f72e832300e8, type: 3}
+    - {fileID: 100002, guid: 834dad2218e29d248a872f09109d6611, type: 3}
+    - {fileID: 100002, guid: 2352ed916b1be2c41912c8dc604b32df, type: 3}
+    - {fileID: 100002, guid: 39dae6bdedce88a45a531fa1e780fc67, type: 3}
 --- !u!114 &11440182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,7 +173,7 @@ MonoBehaviour:
     SpawnTimeOut: 0.1
   - EnemyType: {fileID: 147728, guid: 7049e5374ec1a1447af280ca0f0777a3, type: 2}
     EnemyCount: 5
-    WaveLength: 30
+    WaveLength: 10
     SpawnTimeOut: 0.1
   Spawn: {fileID: 0}
 --- !u!114 &11466132
@@ -96,14 +206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334bb95012be62848803cdd3fb327527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldSize:
-    Y: 0
-    X: 0
   StartLifes: 10
   StartMoney: 1000
   AvailableTower:
   - {fileID: 11408962, guid: 1e10e3bb708b6f04a8284c6e60efe737, type: 2}
   - {fileID: 11481800, guid: 18f1676f9c8dda04ba9fc3400bba1bd1, type: 2}
+  - {fileID: 11482908, guid: 64d4ca2c207fa314c87f400ce1200f43, type: 2}
   AvailableTiles: []
 --- !u!114 &11488218
 MonoBehaviour:
@@ -117,6 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaceholderMaterial: {fileID: 2100000, guid: d7dfdd16a61883f4295f74c90a80e237, type: 2}
+  RangeIndicator: {fileID: 143796, guid: 58e8bd5f656dfb94ba9a1afc6be7cafb, type: 2}
+  CameraSpeed: 15
+  CameraZoonSpeed: 20
+  MinCameraZoom: 20
+  MaxCameraZoom: 90
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
