@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     public Material PlaceholderMaterial;
+    public GameObject RangeIndicator;
     public float CameraSpeed = 18;
     public float CameraZoonSpeed = 20;
     public float MinCameraZoom = 20;
@@ -147,11 +148,17 @@ public class InputManager : MonoBehaviour
         }
 
         var addon = (GameObject)Instantiate(tower, Vector3.up, Quaternion.identity);
+        var towerRange = addon.GetComponent<Tower>().Range;
         Destroy(addon.GetComponent<Tower>());
 
         var placeholder = addon.AddComponent<PlaceHolder>();
         placeholder.Original = tower;
         placeholder.SetMaterial(PlaceholderMaterial);
+
+        var indicator = (GameObject) Instantiate(RangeIndicator, placeholder.transform.position, Quaternion.identity);
+        indicator.transform.localScale = new Vector3(towerRange, indicator.transform.localScale.y, towerRange);
+
+        indicator.transform.SetParent(placeholder.transform);
 
         addon.layer = 2;
         _courserAddition = addon;
